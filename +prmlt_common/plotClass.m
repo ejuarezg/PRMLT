@@ -19,15 +19,15 @@ switch d
         view(2);
         for i = 1:c
             idc = label==i;
-%             plot(X(1,label==i),X(2,label==i),['.' color(i)],'MarkerSize',15);
-            scatter(X(1,idc),X(2,idc),36,color(mod(i-1,m)+1));
+            plot(X(1,label==i),X(2,label==i),['o' color(i)],'MarkerSize',12);
+            % scatter(X(1,idc),X(2,idc),36,color(mod(i-1,m)+1));
         end
     case 3
         view(3);
         for i = 1:c
             idc = label==i;
-%             plot3(X(1,idc),X(2,idci),X(3,idc),['.' idc],'MarkerSize',15);
-            scatter3(X(1,idc),X(2,idc),X(3,idc),36,color(mod(i-1,m)+1));
+            plot3(X(1,idc),X(2,idci),X(3,idc),['o' idc],'MarkerSize',12);
+            % scatter3(X(1,idc),X(2,idc),X(3,idc),36,color(mod(i-1,m)+1));
         end
     otherwise
         error('ERROR: only support data of 2D or 3D.');
