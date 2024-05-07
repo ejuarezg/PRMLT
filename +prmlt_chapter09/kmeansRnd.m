@@ -13,8 +13,8 @@ alpha = 1;
 beta = nthroot(k,d); % k points in volume x^d : x^d=k
 
 X = randn(d,n);
-w = dirichletRnd(alpha,ones(1,k)/k);
-z = discreteRnd(w,n);
+w = prmlt_chapter11.dirichletRnd(alpha,ones(1,k)/k);
+z = prmlt_chapter11.discreteRnd(w,n);
 E = full(sparse(z,1:n,1,k,n,n));
 mu = randn(d,k)*beta;
 X = X+mu*E;

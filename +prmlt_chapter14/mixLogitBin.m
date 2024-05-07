@@ -27,15 +27,15 @@ for iter = 2:maxiter
     % maximization
     nk = sum(R,1);
     alpha = nk/n;
-    Y = sigmoid(A);
+    Y = prmlt_chapter04.sigmoid(A);
     for j = 1:k
         W(:,j) = newtonStep(X, t, Y(:,j), W(:,j), R(:,j));
     end
     % expectation
     A = X'*W;
-    logRho = -log1pexp(-bsxfun(@times,A,h));
+    logRho = -prmlt_common.log1pexp(-bsxfun(@times,A,h));
     logRho = bsxfun(@plus,logRho,log(alpha));
-    T = logsumexp(logRho,2);
+    T = prmlt_common.logsumexp(logRho,2);
     llh(iter) = sum(T)/n; % loglikelihood
     logR = bsxfun(@minus,logRho,T);
     R = exp(logR);
