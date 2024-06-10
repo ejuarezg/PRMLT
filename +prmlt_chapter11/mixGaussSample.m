@@ -8,11 +8,11 @@ function [X, z] = mixGaussSample(Theta, w, n )
 %   X: d x n data matrix
 %   z: 1 x n response variable
 % Written by Mo Chen (sth4nth@gmail.com).
-z = discreteRnd(w,n);
+z = prmlt_chapter11.discreteRnd(w,n);
 d = Theta{1}.dim();
 X = zeros(d,n);
 for i = 1:numel(w)
     idx = z==i;
     [mu,Sigma] = Theta{i}.sample(); % invpd(wishrnd(W0,v0));
-    X(:,idx) = gaussRnd(mu,Sigma,sum(idx));
+    X(:,idx) = prmlt_chapter11.gaussRnd(mu,Sigma,sum(idx));
 end

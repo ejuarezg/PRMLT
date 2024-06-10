@@ -27,5 +27,5 @@ else
     S0 = opt.S;
     alpha0 = opt.alpha;
 end
-prior = GaussWishart(kappa0,m0,nu0,S0);
-[label, Theta, w, llh] = mixDpGb(X,alpha0,prior);
+prior = prmlt_chapter11.GaussWishart(kappa0,m0,nu0,S0);
+[label, Theta, w, llh] = prmlt_chapter11.mixDpGb(X,alpha0,prior);

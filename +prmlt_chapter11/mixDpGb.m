@@ -12,7 +12,7 @@ function [label, Theta, w, llh] = mixDpGb(X, alpha, theta)
 %   llh: loglikelihood
 % Written by Mo Chen (sth4nth@gmail.com).
 n = size(X,2);
-[label,Theta,w] = mixDpGbOl(X,alpha,theta);
+[label,Theta,w] = prmlt_chapter11.mixDpGbOl(X,alpha,theta);
 nk = n*w;
 maxIter = 50;
 llh = zeros(1,maxIter);
@@ -32,7 +32,7 @@ for iter = 1:maxIter
         P0 = log(alpha)+theta.logPredPdf(x);
         p = [Pk,P0];
         llh(iter) = llh(iter)+sum(p-log(n));
-        k = discreteRnd(exp(p-logsumexp(p)));
+        k = prmlt_chapter11.discreteRnd(exp(p-prmlt_common.logsumexp(p)));
         if k == numel(Theta)+1                 % add extra cluster
             Theta{k} = theta.clone().addSample(x);
             nk = [nk,1];

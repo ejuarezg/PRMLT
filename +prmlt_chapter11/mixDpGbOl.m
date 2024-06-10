@@ -21,7 +21,7 @@ for i = randperm(n)
     P0 = log(alpha)+theta.logPredPdf(x);
     p = [Pk,P0];
     llh = llh+sum(p-log(n));
-    k = discreteRnd(exp(p-logsumexp(p)));
+    k = prmlt_chapter11.discreteRnd(exp(p-prmlt_common.logsumexp(p)));
     if k == numel(Theta)+1
         Theta{k} = theta.clone().addSample(x);
         nk = [nk,1];

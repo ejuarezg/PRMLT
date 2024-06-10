@@ -16,8 +16,8 @@ mu0 = zeros(d,1);  % hyperparameter of Guassian prior of means
 beta0 = nthroot(k,d); % hyperparameter of Guassian prior of means % in volume x^d there is k points: x^d=k
 
 
-w = dirichletRnd(alpha0,ones(1,k)/k);
-z = discreteRnd(w,n);
+w = prmlt_chapter11.dirichletRnd(alpha0,ones(1,k)/k);
+z = prmlt_chapter11.discreteRnd(w,n);
 
 mu = zeros(d,k);
 Sigma = zeros(d,d,k);
@@ -25,8 +25,8 @@ X = zeros(d,n);
 for i = 1:k
     idx = z==i;
     Sigma(:,:,i) = iwishrnd(W0,v0); % invpd(wishrnd(W0,v0));
-    mu(:,i) = gaussRnd(mu0,beta0*Sigma(:,:,i));
-    X(:,idx) = gaussRnd(mu(:,i),Sigma(:,:,i),sum(idx));
+    mu(:,i) = prmlt_chapter11.gaussRnd(mu0,beta0*Sigma(:,:,i));
+    X(:,idx) = prmlt_chapter11.gaussRnd(mu(:,i),Sigma(:,:,i),sum(idx));
 end
 model.mu = mu;
 model.Sigma = Sigma;

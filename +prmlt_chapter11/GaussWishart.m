@@ -102,7 +102,7 @@ classdef GaussWishart
              U = obj.U_;
              
              Sigma = iwishrnd(U'*U,nu);
-             mu = gaussRnd(m,Sigma/kappa);
+             mu = prmlt_chapter11.gaussRnd(m,Sigma/kappa);
          end
      end
 end
