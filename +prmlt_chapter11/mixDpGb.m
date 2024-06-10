@@ -22,7 +22,7 @@ for iter = 1:maxIter
         k = label(i);
         Theta{k} = Theta{k}.delSample(x);
         nk(k) = nk(k)-1;
-        if nk(k) == 0           % remove empty cluster
+        if abs(nk(k)) < 1e-12           % remove empty cluster
             Theta(k) = [];
             nk(k) = [];
             which = label>k;
