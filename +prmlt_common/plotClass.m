@@ -11,8 +11,8 @@ color = 'brgmcyk';
 m = length(color);
 c = max(label);
 
-figure(gcf);
-clf;
+% figure(gcf);
+% clf;
 hold on;
 switch d
     case 2
