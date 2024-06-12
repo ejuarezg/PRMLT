@@ -101,7 +101,12 @@ classdef GaussWishart
              nu = obj.nu_;
              U = obj.U_;
              
-             Sigma = iwishrnd(U'*U,nu);
+             % NOTE: iwishrnd requires precision or covariance matrix and U is
+             % not the Cholesky form of the cov matrix as seen in initialization
+             % method
+             S = U'*U-kappa*(m*m');
+             Sigma = iwishrnd(S, nu);
+             % Sigma = iwishrnd(U'*U,nu);
              mu = prmlt_chapter11.gaussRnd(m,Sigma/kappa);
          end
      end
